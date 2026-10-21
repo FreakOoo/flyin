@@ -1,0 +1,5 @@
+//still needs completing 
+
+drones = 1
+zones = 1
+capacity = 1

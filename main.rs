@@ -1,5 +1,5 @@
 mod structs;
-
+mod parsing;
 
 // currently this is just for test printing 
 // I slopped the printout text

@@ -1,13 +1,11 @@
 mod structs;
 mod parsing;
 
-// currently this is just for test printing 
+// currently this is just for test printing
 // I slopped the printout text
 
-
-use structs::{Drone, Zone, Attribute};
-
-let attribute = Attribute::Normal;
+use structs::{Drone, Zone, ZoneType};
+use parsing::read_config;
 
 fn main()
 {
@@ -16,10 +14,13 @@ fn main()
         location: 1,
     };
     let zone = Zone {
-        name: 1,
-        n_connections: 1,
-        capacity: 1,
-        attributes: Attribute::Start,
+        name: String::from("hub"),
+        x: 0,
+        y: 0,
+        zone_type: ZoneType::Normal,
+        max_drones: 1,
+        color: None,
+        neighbors: vec![1, 2],
     };
     println!(
         "Drone {} is currently located in zone {}.",
@@ -27,15 +28,13 @@ fn main()
     );
 
     println!(
-        "Zone {} has {} connections, a capacity of {}, and an attribute of {:?}.",
-        zone.name, zone.n_connections, zone.capacity, zone.attributes
+        "Zone {} has {} connections, a capacity of {}, and a type of {:?}.",
+        zone.name, zone.neighbors.len(), zone.max_drones, zone.zone_type
     );
 
     // Print every field of each struct automatically:
     println!("Full drone details: {:?}", drone);
     println!("Full zone details: {:?}", zone);
     println!("Now doing the config printout");
-    use parsing::read_config;
     read_config();
 }
-

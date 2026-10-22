@@ -18,8 +18,13 @@ pub fn read_config()
 
     for line in info.lines()
     {
+
         //this is while I'm still testing if reading the config even works
-        //let line = line.trim();
+        let line = line.trim();
+        if line.is_empty() || line.starts_with('#')
+        {
+            continue;
+        }            
         println!("Line: {}", line);
     }
 }

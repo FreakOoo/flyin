@@ -7,6 +7,8 @@ mod parsing;
 
 use structs::{Drone, Zone, Attribute};
 
+let attribute = Attribute::Normal;
+
 fn main()
 {
     let drone = Drone {
@@ -32,4 +34,8 @@ fn main()
     // Print every field of each struct automatically:
     println!("Full drone details: {:?}", drone);
     println!("Full zone details: {:?}", zone);
+    println!("Now doing the config printout");
+    use parsing::read_config;
+    read_config();
 }
+

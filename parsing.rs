@@ -8,7 +8,7 @@
 //was still building this and still need help for it 
 //
 
-use std::collections::HashMap;
+//use std::collections::HashMap;
 use std::fs;
 
 pub fn read_config()

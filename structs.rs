@@ -21,4 +21,4 @@ pub struct Zone
     pub    n_connections: i32,
     pub    capacity: i32,
     pub    attributes: Attribute,
-}
+

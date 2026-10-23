@@ -4,6 +4,13 @@ pub struct Drone
     pub    name: i32,
     pub    location: i32,
 }
+impl Drone
+{
+    pub fn new(id:usize, location:usize)->Drone 
+    {
+        Drone { name: id, location}
+    }
+}
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum ZoneType
 {

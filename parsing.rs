@@ -3,7 +3,18 @@ use std::collections::HashMap;
 
 
 
-pub fn read_config()->HashMap<String, String>
+pub struct Config
+{
+    pub nb_drones: usize,
+    pub zones: Vec<Zone>,
+    pub strat: usize,
+    pub end: usize,
+}
+
+// result(T,E) is common to denote expected type,
+// and the error type in case it fails.
+
+pub fn read_config()->Result<Config,ParseError>
 
 {
     let mut config = HashMap::new();
@@ -22,7 +33,7 @@ pub fn read_config()->HashMap<String, String>
         //Some is for if I may or may not get a result
         //if no result skip, if result take
         //unlike expect that throws an error if empty. (I think)
-        if let Some((key,value)) = line.split_once('=')
+        if let Some((key,value)) = line.split_once(':')
         {
             config.insert(
                 key.trim().to_string(),

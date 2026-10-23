@@ -1,32 +1,36 @@
-//left off here 
-//still need to complete the 
-//turning these key value pairs 
-//into usable keys and values in other files.
-//I'm using a hashmap to make the values easy to retrieve
-//from the keys
-//
-//was still building this and still need help for it 
-//
-
-//use std::collections::HashMap;
 use std::fs;
+use std::collections::HashMap;
 
-pub fn read_config()
+
+
+pub fn read_config()->HashMap<String, String>
+
 {
+    let mut config = HashMap::new();
+
     let info = fs::read_to_string("config.txt")
         .expect("Couldn't read config properly");
 
     for line in info.lines()
     {
 
-        //this is while I'm still testing if reading the config even works
         let line = line.trim();
         if line.is_empty() || line.starts_with('#')
         {
             continue;
         }            
-        println!("Line: {}", line);
+        //Some is for if I may or may not get a result
+        //if no result skip, if result take
+        //unlike expect that throws an error if empty. (I think)
+        if let Some((key,value)) = line.split_once('=')
+        {
+            config.insert(
+                key.trim().to_string(),
+                value.trim().to_string(),
+            );
+        }
+
     }
+
+    config
 }
-
-

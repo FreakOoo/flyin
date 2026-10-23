@@ -22,6 +22,7 @@ fn main()
         color: None,
         neighbors: vec![1, 2],
     };
+    println!("testing the objets initiated in main \n\n");
     println!(
         "Drone {} is currently located in zone {}.",
         drone.name, drone.location
@@ -33,10 +34,12 @@ fn main()
     );
 
     // Print every field of each struct automatically:
-    println!("Full drone details: {:?}", drone);
+    println!("\nFull drone details: {:?}", drone);
     println!("Full zone details: {:?}", zone);
-    println!("Now doing the config printout");
+
     let config = read_config();
+
+
     println!("\n now printing from key value pairs in config\n\n");
     for(key,value) in &config
     {

@@ -37,12 +37,9 @@ fn main()
     println!("\nFull drone details: {:?}", drone);
     println!("Full zone details: {:?}", zone);
 
-    let config = read_config();
-
-
-    println!("\n now printing from key value pairs in config\n\n");
-    for(key,value) in &config
+    match read_config()
     {
-        println!("{key} = {value}");
+        Ok(config) => println!("config has {} drones", config.nb_drones),
+        Err(message) => println!("Error: {}", message),
     }
 }

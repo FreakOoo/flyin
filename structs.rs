@@ -1,8 +1,8 @@
 #[derive(Debug)]
 pub struct Drone
 {
-    pub    name: i32,
-    pub    location: i32,
+    pub    name: usize,
+    pub    location: usize,
 }
 impl Drone
 {
@@ -19,6 +19,16 @@ pub enum ZoneType
         Restricted,
         Priority,
 }
+//from and towards are just names, connections are 
+//bidirectional, I may rename them to a and b
+#[derive(Debug)]
+pub struct Connection
+{
+    pub from:usize,
+    pub towards:usize,
+    pub max_link_capacity:usize,
+}
+
 #[derive(Debug)]
 pub struct Zone 
 {
